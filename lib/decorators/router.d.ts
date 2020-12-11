@@ -2,6 +2,14 @@ import { MethodType } from '../router';
 import { Schema } from 'jsonschema';
 export declare const Priority: (priority: number) => Function;
 export declare const Meta: (meta: any) => Function;
+export declare const Get: (path?: string) => Function;
+export declare const Post: (path?: string) => Function;
+export declare const Put: (path?: string) => Function;
+export declare const Delete: (path?: string) => Function;
+export declare const Patch: (path?: string) => Function;
+export declare const Options: (path?: string) => Function;
+export declare const Head: (path?: string) => Function;
+export declare const All: (path?: string) => Function;
 export declare const Route: {
     get: (path?: string) => Function;
     post: (path?: string) => Function;

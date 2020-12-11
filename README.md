@@ -1,5 +1,7 @@
 # koa-decorator-ts
 
+This module is a fork of [koa-decorator-ts](https://www.npmjs.com/package/koa-decorator-ts), provides decorators for all of the standard HTTP methods: `@Get()`, `@Post()`, `@Put()`, `@Delete()`, `@Patch()`, `@Options()`, and `@Head()`. In addition, `@All()` defines an endpoint that handles all of them.
+
 Koa Decorator (with TypeScript)
 
 # Installation
@@ -50,6 +52,12 @@ import Koa from 'koa';
 import {
   Controller,
   Route,
+  All,
+  Post,
+  Get,
+  Patch,
+  Put,
+  Delete,
   Middleware,
   Required,
   Graphql,
@@ -74,13 +82,13 @@ class PatchUserRequest{
 @Controller('/user')
 class UserController {
   @Priority(-1000)
-  @Route.all('*')
+  @All('*')
   async handleAll(ctx: Koa.Context, next: any) {
     ctx.body = 'haha';
   }
 
   // Post /user/login
-  @Route.post('/login')
+  @Post('/login')
   @Required({
     // Require { userEmail, password } in the body
     body: {
@@ -101,14 +109,14 @@ class UserController {
   }
 
   // Get /user/:userId
-  @Route.get('/:userId')
+  @Get('/:userId')
   @Middleware(middlewareLog) // Add Middleware
   async getUserInfo(ctx: Koa.Context) {
     ctx.body = { userName: 'skm', userEmail: 'skmdev@gmail.com' };
   }
 
   // Get /user?top=10&star=1000000
-  @Route.get('/')
+  @Get('/')
   @Required({
     query: {
       type: 'object',
@@ -125,26 +133,26 @@ class UserController {
   }
 
   // Patch /user/:userId
-  @Route.patch('/:userId')
+  @Patch('/:userId')
   @RequiredBody(PatchUserRequest) //do the same for query using @RequiredQuery
   async updateUserInfo(ctx: Koa.Context) {
     ctx.body = true;
   }
 
   // Put /user/:userId/follow
-  @Route.put('/:userId/follow')
+  @Put('/:userId/follow')
   async followUser(ctx: Koa.Context) {
     ctx.body = true;
   }
 
   // Delete /user/:userId/follow
-  @Route.del('/:userId/follow')
+  @Delete('/:userId/follow')
   async unfollowUser(ctx: Koa.Context) {
     ctx.body = true;
   }
 
   @Meta({ test: 'cc' })
-  @Route.get('/meta')
+  @Get('/meta')
   async metaTest(ctx: Koa.Context) {
     ctx.body = ctx.meta;
   }

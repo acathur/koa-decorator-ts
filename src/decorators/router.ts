@@ -57,13 +57,22 @@ const route = (config: RouteConfig): Function => (
 const getRoute = (method: MethodType) => (path = '/') =>
   route({ method, path });
 
+export const Get = getRoute(MethodType.Get);
+export const Post = getRoute(MethodType.Post);
+export const Put = getRoute(MethodType.Put);
+export const Delete = getRoute(MethodType.Delete);
+export const Patch = getRoute(MethodType.Patch);
+export const Options = getRoute(MethodType.Options);
+export const Head = getRoute(MethodType.Head);
+export const All = getRoute(MethodType.All);
+
 export const Route = {
-  get: getRoute(MethodType.Get),
-  post: getRoute(MethodType.Post),
-  put: getRoute(MethodType.Put),
-  del: getRoute(MethodType.Delete),
-  patch: getRoute(MethodType.Patch),
-  all: getRoute(MethodType.All),
+  get: Get,
+  post: Post,
+  put: Put,
+  del: Delete,
+  patch: Patch,
+  all: All,
 };
 
 export const Controller = (path = '') => (target: any) => {

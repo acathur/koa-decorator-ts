@@ -15,7 +15,7 @@
     "koa-compose": "^4.1.0",
     "koa-router": "^7.4.0"
   },
-  "description": "koa decorator",
+  "description": "A fork of koa-decorator-ts, provides decorators for all of the standard HTTP methods.",
   "devDependencies": {
     "@babel/core": "7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
@@ -75,7 +75,7 @@
   },
   "license": "ISC",
   "main": "./lib",
-  "name": "koa-decorator-ts",
+  "name": "@acathur/koa-decorator-ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skmdev/koa-decorator-ts.git"
@@ -93,5 +93,5 @@
     "prettier": "prettier --write \"{src,test}/**/*.ts{,x}\"",
     "test": "cross-env NODE_ENV=test jest  --no-cache --detectOpenHandles --runInBand"
   },
-  "version": "2.7.0"
+  "version": "2.7.1"
 }
